@@ -1,0 +1,59 @@
+
+<?xml version="1.0" ?>
+<sdf version="1.8">
+        <world name="RG1">
+                <physics name="1ms" type="ignored">
+                        <max_step_size>0.001</max_step_size>
+                        <real_time_factor>1.0</real_time_factor>
+                </physics>
+                <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"></plugin>
+                <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"></plugin>
+                <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
+                <plugin filename="MinimalScene" name="3D View">
+                        <gz-gui>
+                                <title>3D View</title>
+                                <property type="bool" key="showTitleBar">false</property>
+                                <property type="string" key="state">docked</property>
+                        </gz-gui>
+                        <engine>ogre2</engine>
+                        <scene>scene</scene>
+                        <ambient_light>0.4 0.4 0.4</ambient_light>
+                        <background_color>0.8 0.8 0.8</background_color>
+                        <camera_pose>-6 0 6 0 0.5 0</camera_pose>
+                        <camera_clip>
+                                <near>0.25</near>
+                                <far>25000</far>
+                        </camera_clip>
+                </plugin>
+                <plugin filename="GzSceneManager" name="Scene Manager">
+                        <gz-gui>
+                                <property key="resizable" type="bool">false</property>
+                                <property key="width" type="double">5</property>
+                                <property key="height" type="double">5</property>
+                                <property key="state" type="string">floating</property>
+                                <property key="showTitleBar" type="bool">false</property>
+                        </gz-gui>
+                </plugin>
+
+                
+                
+            <model name="wall_1">
+                <link name="wall_1-base-link">
+                    <pose> 
+                        0 0 0 0 0 0 
+                    </pose>
+                    <visual name="wall_1-visual">
+                        <geometry>
+                            <box>
+                                <size> 1 1 1 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+                
+
+        </world>
+</sdf>
+

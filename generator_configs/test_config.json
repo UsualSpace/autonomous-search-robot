@@ -1,0 +1,11 @@
+{
+	"cell_size": 2,
+	"max_cell_rows": 5,
+	"max_cell_columns": 5,
+	"ceiling_height": 2.4,
+	"wall_thickness": 1,
+	"random_room_shape": false,
+	"random_openness": false,
+	"general_model_uris": [],
+	"unqiue_model_uris": []
+}
