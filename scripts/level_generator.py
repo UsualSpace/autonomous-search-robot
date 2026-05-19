@@ -190,7 +190,7 @@ class Ceiling(Object):
                     <light type="point" name="{self.name + "-light"}">
                         <pose> 0 0 -1 0 0 0 </pose>
                         <cast_shadows>false</cast_shadows>
-                        <diffuse>0.5 0.5 0.5 1</diffuse>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
                         <attenuation>
                             <range>10</range>
                             <constant>0.8</constant>
@@ -209,22 +209,40 @@ def compileSDF(objects):
         objects_str += object.toXMLStr()
     return world_template.replace("[INSERT]", objects_str)
 
+import random
 def generateLevel(configuration, seed):
     rows = configuration["max_cell_rows"]
     columns = configuration["max_cell_columns"]
     cell_size = configuration["cell_size"]
     ceiling_height = configuration["ceiling_height"]
     wall_thickness = configuration["wall_thickness"]
+    random.seed(seed)
 
     room = [[0 for _ in range(columns)] for _ in range(rows)]
     objects = []
 
     if configuration["random_room_shape"]:
-        #Idea: randomly stitch together square and rectangular cell groups to form a random room shape.
-        
+        #Idea: randomly stitch together square and rectangular cell groups to form a random room shape,
+        #effectively "growing" the room.
+        growth_patterns = [(2, 2), (2, 3), (3, 2)]
+        growth_start_coords = (rows // 2, columns // 2)
+        growth_steps = 7
+        active_cell_coords = [growth_start_coords]
+        for i in range(growth_steps):
+            pattern = random.choice(growth_patterns)
+            random_active_cell = random.choice(active_cell_coords)
+            for row in range(pattern[0]):
+                for column in range(pattern[1]):
+                    true_row = random_active_cell[0] + row
+                    true_column = random_active_cell[1] + column
+                    
+                    if (0 <= true_row < rows) and (0 <= true_column < columns):
+                        room[true_row][true_column] = 1
+                        active_cell_coords.append((true_row, true_column))
+
     else:
-        for row in range(len(room)):
-            for column in range(len(room[0])):
+        for row in range(rows):
+            for column in range(columns):
                 room[row][column] = 1
 
     #Wrap room in walls, ceilings, and floors. Condition is if neighbor cell is nonexistent or invalid.
