@@ -91,6 +91,7 @@ class Model(Object):
     def toXMLStr(self):
         return f"""
             <include>
+                <static> true </static>
                 <name> {self.name} </name>
                 {self.poseXMLStr()}
                 {self.scaleXMLStr(is_primitive=False)}
@@ -111,6 +112,7 @@ class Wall(Object):
     def toXMLStr(self):
         return f"""
             <model name="{self.name}">
+                <static> true </static>
                 {self.poseXMLStr()}
                 <link name="{self.name + "-base-link"}">
                     <visual name="{self.name + "-visual"}">
@@ -119,11 +121,10 @@ class Wall(Object):
                                 {self.scaleXMLStr(is_primitive=True)}
                             </box>
                         </geometry>
-<material>
-  <ambient>0.6 0.6 0.6 1</ambient>
-  <diffuse>0.8 0.8 0.8 1</diffuse>
-  <specular>0.0 0.0 0.0 1</specular>
-</material>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
                     </visual>
                 </link>
             </model>
@@ -142,6 +143,7 @@ class Floor(Object):
     def toXMLStr(self):
         return f"""
             <model name="{self.name}">
+                <static> true </static>
                 {self.poseXMLStr()}
                 <link name="{self.name + "-base-link"}">
                     <visual name="{self.name + "-visual"}">
@@ -150,6 +152,10 @@ class Floor(Object):
                                 {self.scaleXMLStr(is_primitive=True)}
                             </box>
                         </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
                     </visual>
                 </link>
             </model>
@@ -167,6 +173,7 @@ class Ceiling(Object):
     def toXMLStr(self):
         return f"""
             <model name="{self.name}">
+                <static> true </static>
                 {self.poseXMLStr()}
                 <link name="{self.name + "-base-link"}">
                     <visual name="{self.name + "-visual"}">
@@ -175,18 +182,21 @@ class Ceiling(Object):
                                 {self.scaleXMLStr(is_primitive=True)}
                             </box>
                         </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
                     </visual>
                     <light type="point" name="{self.name + "-light"}">
                         <pose> 0 0 -1 0 0 0 </pose>
                         <cast_shadows>false</cast_shadows>
-                        <diffuse>0.8 0.8 0.8 1</diffuse>
-<attenuation>
-  <range>20</range>
-  <constant>0.8</constant>
-  <linear>0.05</linear>
-  <quadratic>0.01</quadratic>
-</attenuation>
-                        
+                        <diffuse>0.5 0.5 0.5 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
                     </light>
                 </link>
             </model>
@@ -210,7 +220,8 @@ def generateLevel(configuration, seed):
     objects = []
 
     if configuration["random_room_shape"]:
-        pass
+        #Idea: randomly stitch together square and rectangular cell groups to form a random room shape.
+        
     else:
         for row in range(len(room)):
             for column in range(len(room[0])):
@@ -224,25 +235,25 @@ def generateLevel(configuration, seed):
                 continue
            
             #Place floor and ceiling for this cell in the room.
-            cell_center = (cell_size * row, cell_size * column, 0)
-            floor_position = (cell_size * row, cell_size * column, -0.5)
+            cell_center = ((row - 0.5 * rows) * cell_size, (column - 0.5 * columns) * cell_size, 0)
+            floor_position = (cell_center[0], cell_center[1], -0.5)
             floor = Floor(position=floor_position, floor_size=cell_size)
-            ceiling_position = (cell_size * row, cell_size * column, ceiling_height + 0.5)
+            ceiling_position = (cell_center[0], cell_center[1], ceiling_height + 0.5)
             ceiling = Ceiling(position=ceiling_position, ceiling_size=cell_size)
             
             objects.append(floor)
             objects.append(ceiling)
 
             #Wall pass. 
-            nc = [(-1, 0), (1, 0), (0, 1), (0, -1)] #neighbor coordinates offsets, North, South, East, West.
+            nc = [(-1, 0), (1, 0), (0, 1), (0, -1)] #neighbor coordinate offsets, North, South, East, West.
             for c in nc:
                 neighbor = (row + c[0], column + c[1])
                 if not (0 <= neighbor[0] < rows) or not (0 <= neighbor[1] < columns) or room[neighbor[0]][neighbor[1]] == 0:
                     #Walls are placed at half a cell size plus the half-thickness of the wall. 
                              
                     wall_position = (
-                        cell_center[0] + c[0] * cell_size * 0.5 + wall_thickness * 0.5,
-                        cell_center[1] + c[1] * cell_size * 0.5 + wall_thickness * 0.5,
+                        cell_center[0] + c[0] * cell_size * 0.5 + c[0] * wall_thickness * 0.5,
+                        cell_center[1] + c[1] * cell_size * 0.5 + c[1] * wall_thickness * 0.5,
                         ceiling_height * 0.5
                     )
 
