@@ -37,17 +37,1592 @@
 
                 
                 
+            <model name="floor_1">
+                
+            <pose> 
+                0 0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_1-base-link">
+                    <visual name="floor_1-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_1">
+                
+            <pose> 
+                0 0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_1-base-link">
+                    <visual name="ceiling_1-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_1-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
             <model name="wall_1">
+                
+            <pose> 
+                -0.5 0.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
                 <link name="wall_1-base-link">
-                    <pose> 
-                        0 0 0 0 0 0 
-                    </pose>
                     <visual name="wall_1-visual">
                         <geometry>
                             <box>
-                                <size> 1 1 1 </size>
+                                <size> 2 1 2.4 </size>
                             </box>
                         </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_2">
+                
+            <pose> 
+                0.5 -0.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_2-base-link">
+                    <visual name="wall_2-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_2">
+                
+            <pose> 
+                0 2 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_2-base-link">
+                    <visual name="floor_2-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_2">
+                
+            <pose> 
+                0 2 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_2-base-link">
+                    <visual name="ceiling_2-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_2-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_3">
+                
+            <pose> 
+                -0.5 2.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_3-base-link">
+                    <visual name="wall_3-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_3">
+                
+            <pose> 
+                0 4 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_3-base-link">
+                    <visual name="floor_3-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_3">
+                
+            <pose> 
+                0 4 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_3-base-link">
+                    <visual name="ceiling_3-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_3-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_4">
+                
+            <pose> 
+                -0.5 4.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_4-base-link">
+                    <visual name="wall_4-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_4">
+                
+            <pose> 
+                0 6 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_4-base-link">
+                    <visual name="floor_4-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_4">
+                
+            <pose> 
+                0 6 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_4-base-link">
+                    <visual name="ceiling_4-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_4-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_5">
+                
+            <pose> 
+                -0.5 6.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_5-base-link">
+                    <visual name="wall_5-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_5">
+                
+            <pose> 
+                0 8 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_5-base-link">
+                    <visual name="floor_5-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_5">
+                
+            <pose> 
+                0 8 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_5-base-link">
+                    <visual name="ceiling_5-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_5-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_6">
+                
+            <pose> 
+                -0.5 8.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_6-base-link">
+                    <visual name="wall_6-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_7">
+                
+            <pose> 
+                0.5 9.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_7-base-link">
+                    <visual name="wall_7-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_6">
+                
+            <pose> 
+                2 0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_6-base-link">
+                    <visual name="floor_6-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_6">
+                
+            <pose> 
+                2 0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_6-base-link">
+                    <visual name="ceiling_6-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_6-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_8">
+                
+            <pose> 
+                2.5 -0.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_8-base-link">
+                    <visual name="wall_8-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_7">
+                
+            <pose> 
+                2 2 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_7-base-link">
+                    <visual name="floor_7-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_7">
+                
+            <pose> 
+                2 2 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_7-base-link">
+                    <visual name="ceiling_7-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_7-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_8">
+                
+            <pose> 
+                2 4 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_8-base-link">
+                    <visual name="floor_8-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_8">
+                
+            <pose> 
+                2 4 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_8-base-link">
+                    <visual name="ceiling_8-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_8-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_9">
+                
+            <pose> 
+                2 6 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_9-base-link">
+                    <visual name="floor_9-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_9">
+                
+            <pose> 
+                2 6 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_9-base-link">
+                    <visual name="ceiling_9-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_9-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_10">
+                
+            <pose> 
+                2 8 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_10-base-link">
+                    <visual name="floor_10-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_10">
+                
+            <pose> 
+                2 8 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_10-base-link">
+                    <visual name="ceiling_10-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_10-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_9">
+                
+            <pose> 
+                2.5 9.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_9-base-link">
+                    <visual name="wall_9-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_11">
+                
+            <pose> 
+                4 0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_11-base-link">
+                    <visual name="floor_11-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_11">
+                
+            <pose> 
+                4 0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_11-base-link">
+                    <visual name="ceiling_11-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_11-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_10">
+                
+            <pose> 
+                4.5 -0.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_10-base-link">
+                    <visual name="wall_10-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_12">
+                
+            <pose> 
+                4 2 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_12-base-link">
+                    <visual name="floor_12-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_12">
+                
+            <pose> 
+                4 2 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_12-base-link">
+                    <visual name="ceiling_12-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_12-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_13">
+                
+            <pose> 
+                4 4 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_13-base-link">
+                    <visual name="floor_13-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_13">
+                
+            <pose> 
+                4 4 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_13-base-link">
+                    <visual name="ceiling_13-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_13-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_14">
+                
+            <pose> 
+                4 6 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_14-base-link">
+                    <visual name="floor_14-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_14">
+                
+            <pose> 
+                4 6 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_14-base-link">
+                    <visual name="ceiling_14-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_14-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_15">
+                
+            <pose> 
+                4 8 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_15-base-link">
+                    <visual name="floor_15-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_15">
+                
+            <pose> 
+                4 8 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_15-base-link">
+                    <visual name="ceiling_15-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_15-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_11">
+                
+            <pose> 
+                4.5 9.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_11-base-link">
+                    <visual name="wall_11-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_16">
+                
+            <pose> 
+                6 0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_16-base-link">
+                    <visual name="floor_16-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_16">
+                
+            <pose> 
+                6 0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_16-base-link">
+                    <visual name="ceiling_16-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_16-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_12">
+                
+            <pose> 
+                6.5 -0.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_12-base-link">
+                    <visual name="wall_12-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_17">
+                
+            <pose> 
+                6 2 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_17-base-link">
+                    <visual name="floor_17-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_17">
+                
+            <pose> 
+                6 2 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_17-base-link">
+                    <visual name="ceiling_17-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_17-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_18">
+                
+            <pose> 
+                6 4 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_18-base-link">
+                    <visual name="floor_18-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_18">
+                
+            <pose> 
+                6 4 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_18-base-link">
+                    <visual name="ceiling_18-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_18-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_19">
+                
+            <pose> 
+                6 6 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_19-base-link">
+                    <visual name="floor_19-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_19">
+                
+            <pose> 
+                6 6 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_19-base-link">
+                    <visual name="ceiling_19-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_19-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="floor_20">
+                
+            <pose> 
+                6 8 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_20-base-link">
+                    <visual name="floor_20-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_20">
+                
+            <pose> 
+                6 8 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_20-base-link">
+                    <visual name="ceiling_20-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_20-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_13">
+                
+            <pose> 
+                6.5 9.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_13-base-link">
+                    <visual name="wall_13-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_21">
+                
+            <pose> 
+                8 0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_21-base-link">
+                    <visual name="floor_21-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_21">
+                
+            <pose> 
+                8 0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_21-base-link">
+                    <visual name="ceiling_21-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_21-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_14">
+                
+            <pose> 
+                9.5 0.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_14-base-link">
+                    <visual name="wall_14-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_15">
+                
+            <pose> 
+                8.5 -0.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_15-base-link">
+                    <visual name="wall_15-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_22">
+                
+            <pose> 
+                8 2 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_22-base-link">
+                    <visual name="floor_22-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_22">
+                
+            <pose> 
+                8 2 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_22-base-link">
+                    <visual name="ceiling_22-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_22-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_16">
+                
+            <pose> 
+                9.5 2.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_16-base-link">
+                    <visual name="wall_16-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_23">
+                
+            <pose> 
+                8 4 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_23-base-link">
+                    <visual name="floor_23-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_23">
+                
+            <pose> 
+                8 4 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_23-base-link">
+                    <visual name="ceiling_23-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_23-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_17">
+                
+            <pose> 
+                9.5 4.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_17-base-link">
+                    <visual name="wall_17-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_24">
+                
+            <pose> 
+                8 6 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_24-base-link">
+                    <visual name="floor_24-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_24">
+                
+            <pose> 
+                8 6 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_24-base-link">
+                    <visual name="ceiling_24-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_24-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_18">
+                
+            <pose> 
+                9.5 6.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_18-base-link">
+                    <visual name="wall_18-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_25">
+                
+            <pose> 
+                8 8 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_25-base-link">
+                    <visual name="floor_25-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_25">
+                
+            <pose> 
+                8 8 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_25-base-link">
+                    <visual name="ceiling_25-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 2 1.0 </size>
+                            </box>
+                        </geometry>
+                    </visual>
+                    <light type="point" name="ceiling_25-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
+                </link>
+            </model>
+        
+            <model name="wall_19">
+                
+            <pose> 
+                9.5 8.5 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_19-base-link">
+                    <visual name="wall_19-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_20">
+                
+            <pose> 
+                8.5 9.5 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_20-base-link">
+                    <visual name="wall_20-visual">
+                        <geometry>
+                            <box>
+                                <size> 2 1 2.4 </size>
+                            </box>
+                        </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
                     </visual>
                 </link>
             </model>

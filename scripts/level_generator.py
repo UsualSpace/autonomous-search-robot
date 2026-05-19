@@ -83,8 +83,8 @@ class Model(Object):
     count = 0 #To provide each model in the gazebo simulation a unique name.
 
     def __init__(self, name="model", position=(0, 0, 0), rotation=(0, 0, 0), scale=(1, 1, 1), uri=""):
-        self.count += 1
-        name = f"{name}_{self.count}"
+        Model.count += 1
+        name = f"{name}_{Model.count}"
         super().__init__(name, position, rotation, scale)
         self.uri = uri
 
@@ -101,9 +101,9 @@ class Model(Object):
 class Wall(Object):
     count = 0 #To provide each wall in the gazebo simulation a unique name.
 
-    def __init__(self, position(0,0,0), aligned_y=False, wall_width=1.0, wall_height=1.0, wall_thickness=1.0):
-        self.count += 1
-        name = f"wall_{self.count}"
+    def __init__(self, position=(0,0,0), aligned_y=False, wall_width=1.0, wall_height=1.0, wall_thickness=1.0):
+        Wall.count += 1
+        name = f"wall_{Wall.count}"
         scale = (wall_width, wall_thickness, wall_height) #Convention is to scale on xz axis and rotate around z.
         rotation = (0, 0, 90 if aligned_y else 0)
         super().__init__(name, position, rotation, scale)
@@ -111,14 +111,19 @@ class Wall(Object):
     def toXMLStr(self):
         return f"""
             <model name="{self.name}">
+                {self.poseXMLStr()}
                 <link name="{self.name + "-base-link"}">
-                    {self.poseXMLStr()}
                     <visual name="{self.name + "-visual"}">
                         <geometry>
                             <box>
                                 {self.scaleXMLStr(is_primitive=True)}
                             </box>
                         </geometry>
+<material>
+  <ambient>0.6 0.6 0.6 1</ambient>
+  <diffuse>0.8 0.8 0.8 1</diffuse>
+  <specular>0.0 0.0 0.0 1</specular>
+</material>
                     </visual>
                 </link>
             </model>
@@ -129,16 +134,16 @@ class Floor(Object):
     count = 0 #To provide each floor in the gazebo simulation a unique name.
 
     def __init__(self, position=(0,0,0), floor_size=1.0):
-        self.count += 1
-        name = f"floor_{self.count}"
+        Floor.count += 1
+        name = f"floor_{Floor.count}"
         scale = (floor_size, floor_size, 1.0)
         super().__init__(name, position, (0,0,0), scale)
 
     def toXMLStr(self):
         return f"""
             <model name="{self.name}">
+                {self.poseXMLStr()}
                 <link name="{self.name + "-base-link"}">
-                    {self.poseXMLStr()}
                     <visual name="{self.name + "-visual"}">
                         <geometry>
                             <box>
@@ -154,16 +159,16 @@ class Ceiling(Object):
     count = 0 #To provide each ceiling in the gazebo simulation a unique name.
 
     def __init__(self, position=(0,0,0), ceiling_size=1.0):
-        self.count += 1
-        name = f"ceiling_{self.count}"
+        Ceiling.count += 1
+        name = f"ceiling_{Ceiling.count}"
         scale=(ceiling_size, ceiling_size, 1.0)
         super().__init__(name, position, (0,0,0), scale)
 
     def toXMLStr(self):
         return f"""
             <model name="{self.name}">
+                {self.poseXMLStr()}
                 <link name="{self.name + "-base-link"}">
-                    {self.poseXMLStr()}
                     <visual name="{self.name + "-visual"}">
                         <geometry>
                             <box>
@@ -171,19 +176,19 @@ class Ceiling(Object):
                             </box>
                         </geometry>
                     </visual>
+                    <light type="point" name="{self.name + "-light"}">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+<attenuation>
+  <range>20</range>
+  <constant>0.8</constant>
+  <linear>0.05</linear>
+  <quadratic>0.01</quadratic>
+</attenuation>
+                        
+                    </light>
                 </link>
-                <light type="spot" name="{self.name + "-light"}">
-                    <cast_shadows>true</cast_shadows>
-                    <diffuse>0.8 0.8 0.8 1</diffuse>
-                    <specular>0.2 0.2 0.2 1</specular>
-                    <attenuation>
-                        <range>1000</range>
-                        <constant>0.9</constant>
-                        <linear>0.01</linear>
-                        <quadratic>0.001</quadratic>
-                    </attenuation>
-                    <direction>0 0 -1</direction>
-                </light>
             </model>
         """
 
@@ -197,6 +202,10 @@ def compileSDF(objects):
 def generateLevel(configuration, seed):
     rows = configuration["max_cell_rows"]
     columns = configuration["max_cell_columns"]
+    cell_size = configuration["cell_size"]
+    ceiling_height = configuration["ceiling_height"]
+    wall_thickness = configuration["wall_thickness"]
+
     room = [[0 for _ in range(columns)] for _ in range(rows)]
     objects = []
 
@@ -214,16 +223,41 @@ def generateLevel(configuration, seed):
                 #Nonexistent room, skip processing.
                 continue
            
+            #Place floor and ceiling for this cell in the room.
+            cell_center = (cell_size * row, cell_size * column, 0)
+            floor_position = (cell_size * row, cell_size * column, -0.5)
+            floor = Floor(position=floor_position, floor_size=cell_size)
+            ceiling_position = (cell_size * row, cell_size * column, ceiling_height + 0.5)
+            ceiling = Ceiling(position=ceiling_position, ceiling_size=cell_size)
+            
+            objects.append(floor)
+            objects.append(ceiling)
 
-            room_center = ro
-
-            #Now this is a valid room, but we need to check neighbor existence/validity for placing walls.
-            nc = [(-1, 0), (1, 0), (0, 1), (0, -1)] #neighbor coordinates, North, South, East, West.
-            direction = True
+            #Wall pass. 
+            nc = [(-1, 0), (1, 0), (0, 1), (0, -1)] #neighbor coordinates offsets, North, South, East, West.
             for c in nc:
                 neighbor = (row + c[0], column + c[1])
-                if not (0 < neighbor[0] < rows) or not (0 < neighbor[1] < columns) or room[neighbor[0]][neighbor[1]] == 0:
+                if not (0 <= neighbor[0] < rows) or not (0 <= neighbor[1] < columns) or room[neighbor[0]][neighbor[1]] == 0:
+                    #Walls are placed at half a cell size plus the half-thickness of the wall. 
+                             
+                    wall_position = (
+                        cell_center[0] + c[0] * cell_size * 0.5 + wall_thickness * 0.5,
+                        cell_center[1] + c[1] * cell_size * 0.5 + wall_thickness * 0.5,
+                        ceiling_height * 0.5
+                    )
+
                     wall = Wall(
+                        position=wall_position, 
+                        aligned_y=not (c[0] == 0), 
+                        wall_width=cell_size, 
+                        wall_height=ceiling_height, 
+                        wall_thickness=wall_thickness
+                    )
+
+                    objects.append(wall)
+
+
+    return objects
       
 
 #MAIN CODE
