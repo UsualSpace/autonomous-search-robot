@@ -210,27 +210,25 @@ def compileSDF(objects):
     return world_template.replace("[INSERT]", objects_str)
 
 import random
-def generateLevel(configuration, seed):
-    rows = configuration["max_cell_rows"]
-    columns = configuration["max_cell_columns"]
-    cell_size = configuration["cell_size"]
-    ceiling_height = configuration["ceiling_height"]
-    wall_thickness = configuration["wall_thickness"]
-    random.seed(seed)
-
+def generateFloorPlan(rows, columns, random_room_shape, growth_steps, seed): 
     room = [[0 for _ in range(columns)] for _ in range(rows)]
-    objects = []
 
-    if configuration["random_room_shape"]:
+    if random_room_shape:
         #Idea: randomly stitch together square and rectangular cell groups to form a random room shape,
         #effectively "growing" the room.
-        growth_patterns = [(2, 2), (2, 3), (3, 2)]
+        growth_patterns = [(2, 2), (2, 3), (3, 2), (1, 4)]
         growth_start_coords = (rows // 2, columns // 2)
-        growth_steps = 7
         active_cell_coords = [growth_start_coords]
+        chosen_cell_coords = []
+        #Begin random growth.
         for i in range(growth_steps):
             pattern = random.choice(growth_patterns)
             random_active_cell = random.choice(active_cell_coords)
+            attempts = 10 
+            #while attempts > 0 and random_active_cell not in chosen_cell_coords:
+            #    random_active_cell = random.choice(active_cell_coords)
+            #    attempts -= 1
+            chosen_cell_coords.append(random_active_cell)
             for row in range(pattern[0]):
                 for column in range(pattern[1]):
                     true_row = random_active_cell[0] + row
@@ -244,6 +242,40 @@ def generateLevel(configuration, seed):
         for row in range(rows):
             for column in range(columns):
                 room[row][column] = 1
+
+    return room
+
+def generateLevel(configuration, seed):
+    rows = configuration["max_cell_rows"]
+    columns = configuration["max_cell_columns"]
+    cell_size = configuration["cell_size"]
+    ceiling_height = configuration["ceiling_height"]
+    wall_thickness = configuration["wall_thickness"]
+   
+    #Prompt user to accept floor plan or regenerate.
+    answer = ""
+    current_seed = seed
+    while answer != "accept":
+        random.seed(current_seed)
+        room = generateFloorPlan(rows, columns, configuration["random_room_shape"], configuration["random_growth_steps"], seed)
+        print(f"Generated floor plan with SEED={current_seed} :")
+        floor_plan_str = ""
+        for row in range(rows):
+            for column in range(columns):
+                floor_plan_str += "#" if room[row][column] == 0 else " "
+            floor_plan_str += "\n"
+        
+        print(floor_plan_str)
+
+        answer = input("accept/regen? ")
+        if answer == "regen":
+            current_seed = int(input("Please enter an integer seed: "))
+            continue
+        else:
+            break
+
+    
+    objects = []
 
     #Wrap room in walls, ceilings, and floors. Condition is if neighbor cell is nonexistent or invalid.
     for row in range(len(room)):
@@ -261,6 +293,12 @@ def generateLevel(configuration, seed):
             
             objects.append(floor)
             objects.append(ceiling)
+
+            #NOTE: place a chair on each floor for testing.
+            models = configuration["general_models"]
+            chair = models[0]
+            chair = Model(name=chair["name"], position=cell_center, uri=chair["uri"])
+            objects.append(chair)
 
             #Wall pass. 
             nc = [(-1, 0), (1, 0), (0, 1), (0, -1)] #neighbor coordinate offsets, North, South, East, West.

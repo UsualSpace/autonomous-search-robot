@@ -92,6 +92,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_1 </name>
+                
+            <pose> 
+                0.0 0.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="wall_1">
                 <static> true </static>
                 
@@ -191,6 +203,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_2 </name>
+                
+            <pose> 
+                0.0 5.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="wall_3">
                 <static> true </static>
                 
@@ -268,6 +292,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_3 </name>
+                
+            <pose> 
+                0.0 10.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="wall_4">
                 <static> true </static>
                 
@@ -290,33 +326,11 @@
                 </link>
             </model>
         
-            <model name="wall_5">
-                <static> true </static>
-                
-            <pose> 
-                0.0 13.0 1.2 0.0 0.0 0.0
-            </pose>
-        
-                <link name="wall_5-base-link">
-                    <visual name="wall_5-visual">
-                        <geometry>
-                            <box>
-                                <size> 5 1 2.4 </size>
-                            </box>
-                        </geometry>
-                        <material>
-                          <diffuse>0.2 0.2 0.2 1</diffuse>
-                          <specular>0.1 0.1 0.1 1</specular>
-                        </material>
-                    </visual>
-                </link>
-            </model>
-        
             <model name="floor_4">
                 <static> true </static>
                 
             <pose> 
-                5.0 0.0 -0.5 0.0 0.0 0.0
+                0.0 15.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_4-base-link">
@@ -338,7 +352,7 @@
                 <static> true </static>
                 
             <pose> 
-                5.0 0.0 2.9 0.0 0.0 0.0
+                0.0 15.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_4-base-link">
@@ -367,15 +381,27 @@
                 </link>
             </model>
         
-            <model name="wall_6">
+            <include>
+                <static> true </static>
+                <name> office_chair_4 </name>
+                
+            <pose> 
+                0.0 15.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_5">
                 <static> true </static>
                 
             <pose> 
-                5.0 -3.0 1.2 0.0 0.0 0.0
+                -3.0 15.0 1.2 0.0 0.0 1.570796326795
             </pose>
         
-                <link name="wall_6-base-link">
-                    <visual name="wall_6-visual">
+                <link name="wall_5-base-link">
+                    <visual name="wall_5-visual">
                         <geometry>
                             <box>
                                 <size> 5 1 2.4 </size>
@@ -393,7 +419,7 @@
                 <static> true </static>
                 
             <pose> 
-                5.0 5.0 -0.5 0.0 0.0 0.0
+                0.0 20.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_5-base-link">
@@ -415,7 +441,7 @@
                 <static> true </static>
                 
             <pose> 
-                5.0 5.0 2.9 0.0 0.0 0.0
+                0.0 20.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_5-base-link">
@@ -444,11 +470,45 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_5 </name>
+                
+            <pose> 
+                0.0 20.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_6">
+                <static> true </static>
+                
+            <pose> 
+                -3.0 20.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_6-base-link">
+                    <visual name="wall_6-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
             <model name="floor_6">
                 <static> true </static>
                 
             <pose> 
-                5.0 10.0 -0.5 0.0 0.0 0.0
+                0.0 25.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_6-base-link">
@@ -470,7 +530,7 @@
                 <static> true </static>
                 
             <pose> 
-                5.0 10.0 2.9 0.0 0.0 0.0
+                0.0 25.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_6-base-link">
@@ -499,11 +559,67 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_6 </name>
+                
+            <pose> 
+                0.0 25.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_7">
+                <static> true </static>
+                
+            <pose> 
+                -3.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_7-base-link">
+                    <visual name="wall_7-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_8">
+                <static> true </static>
+                
+            <pose> 
+                0.0 28.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_8-base-link">
+                    <visual name="wall_8-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
             <model name="floor_7">
                 <static> true </static>
                 
             <pose> 
-                5.0 15.0 -0.5 0.0 0.0 0.0
+                5.0 0.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_7-base-link">
@@ -525,7 +641,7 @@
                 <static> true </static>
                 
             <pose> 
-                5.0 15.0 2.9 0.0 0.0 0.0
+                5.0 0.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_7-base-link">
@@ -554,37 +670,27 @@
                 </link>
             </model>
         
-            <model name="wall_7">
+            <include>
+                <static> true </static>
+                <name> office_chair_7 </name>
+                
+            <pose> 
+                5.0 0.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_9">
                 <static> true </static>
                 
             <pose> 
-                2.0 15.0 1.2 0.0 0.0 1.570796326795
+                5.0 -3.0 1.2 0.0 0.0 0.0
             </pose>
         
-                <link name="wall_7-base-link">
-                    <visual name="wall_7-visual">
-                        <geometry>
-                            <box>
-                                <size> 5 1 2.4 </size>
-                            </box>
-                        </geometry>
-                        <material>
-                          <diffuse>0.2 0.2 0.2 1</diffuse>
-                          <specular>0.1 0.1 0.1 1</specular>
-                        </material>
-                    </visual>
-                </link>
-            </model>
-        
-            <model name="wall_8">
-                <static> true </static>
-                
-            <pose> 
-                5.0 18.0 1.2 0.0 0.0 0.0
-            </pose>
-        
-                <link name="wall_8-base-link">
-                    <visual name="wall_8-visual">
+                <link name="wall_9-base-link">
+                    <visual name="wall_9-visual">
                         <geometry>
                             <box>
                                 <size> 5 1 2.4 </size>
@@ -602,7 +708,7 @@
                 <static> true </static>
                 
             <pose> 
-                10.0 0.0 -0.5 0.0 0.0 0.0
+                5.0 5.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_8-base-link">
@@ -624,7 +730,7 @@
                 <static> true </static>
                 
             <pose> 
-                10.0 0.0 2.9 0.0 0.0 0.0
+                5.0 5.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_8-base-link">
@@ -653,33 +759,23 @@
                 </link>
             </model>
         
-            <model name="wall_9">
+            <include>
                 <static> true </static>
+                <name> office_chair_8 </name>
                 
             <pose> 
-                10.0 -3.0 1.2 0.0 0.0 0.0
+                5.0 5.0 0 0.0 0.0 0.0
             </pose>
         
-                <link name="wall_9-base-link">
-                    <visual name="wall_9-visual">
-                        <geometry>
-                            <box>
-                                <size> 5 1 2.4 </size>
-                            </box>
-                        </geometry>
-                        <material>
-                          <diffuse>0.2 0.2 0.2 1</diffuse>
-                          <specular>0.1 0.1 0.1 1</specular>
-                        </material>
-                    </visual>
-                </link>
-            </model>
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
         
             <model name="floor_9">
                 <static> true </static>
                 
             <pose> 
-                10.0 5.0 -0.5 0.0 0.0 0.0
+                5.0 10.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_9-base-link">
@@ -701,7 +797,7 @@
                 <static> true </static>
                 
             <pose> 
-                10.0 5.0 2.9 0.0 0.0 0.0
+                5.0 10.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_9-base-link">
@@ -730,11 +826,23 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_9 </name>
+                
+            <pose> 
+                5.0 10.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="floor_10">
                 <static> true </static>
                 
             <pose> 
-                10.0 10.0 -0.5 0.0 0.0 0.0
+                5.0 15.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_10-base-link">
@@ -756,7 +864,7 @@
                 <static> true </static>
                 
             <pose> 
-                10.0 10.0 2.9 0.0 0.0 0.0
+                5.0 15.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_10-base-link">
@@ -785,11 +893,23 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_10 </name>
+                
+            <pose> 
+                5.0 15.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="wall_10">
                 <static> true </static>
                 
             <pose> 
-                13.0 10.0 1.2 0.0 0.0 1.570796326795
+                8.0 15.0 1.2 0.0 0.0 1.570796326795
             </pose>
         
                 <link name="wall_10-base-link">
@@ -811,7 +931,7 @@
                 <static> true </static>
                 
             <pose> 
-                10.0 15.0 -0.5 0.0 0.0 0.0
+                5.0 20.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_11-base-link">
@@ -833,7 +953,7 @@
                 <static> true </static>
                 
             <pose> 
-                10.0 15.0 2.9 0.0 0.0 0.0
+                5.0 20.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_11-base-link">
@@ -862,11 +982,23 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_11 </name>
+                
+            <pose> 
+                5.0 20.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="wall_11">
                 <static> true </static>
                 
             <pose> 
-                13.0 15.0 1.2 0.0 0.0 1.570796326795
+                8.0 20.0 1.2 0.0 0.0 1.570796326795
             </pose>
         
                 <link name="wall_11-base-link">
@@ -884,33 +1016,11 @@
                 </link>
             </model>
         
-            <model name="wall_12">
-                <static> true </static>
-                
-            <pose> 
-                10.0 18.0 1.2 0.0 0.0 0.0
-            </pose>
-        
-                <link name="wall_12-base-link">
-                    <visual name="wall_12-visual">
-                        <geometry>
-                            <box>
-                                <size> 5 1 2.4 </size>
-                            </box>
-                        </geometry>
-                        <material>
-                          <diffuse>0.2 0.2 0.2 1</diffuse>
-                          <specular>0.1 0.1 0.1 1</specular>
-                        </material>
-                    </visual>
-                </link>
-            </model>
-        
             <model name="floor_12">
                 <static> true </static>
                 
             <pose> 
-                15.0 0.0 -0.5 0.0 0.0 0.0
+                5.0 25.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_12-base-link">
@@ -932,7 +1042,7 @@
                 <static> true </static>
                 
             <pose> 
-                15.0 0.0 2.9 0.0 0.0 0.0
+                5.0 25.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_12-base-link">
@@ -961,11 +1071,45 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_12 </name>
+                
+            <pose> 
+                5.0 25.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_12">
+                <static> true </static>
+                
+            <pose> 
+                8.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_12-base-link">
+                    <visual name="wall_12-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
             <model name="wall_13">
                 <static> true </static>
                 
             <pose> 
-                18.0 0.0 1.2 0.0 0.0 1.570796326795
+                5.0 28.0 1.2 0.0 0.0 0.0
             </pose>
         
                 <link name="wall_13-base-link">
@@ -983,33 +1127,11 @@
                 </link>
             </model>
         
-            <model name="wall_14">
-                <static> true </static>
-                
-            <pose> 
-                15.0 -3.0 1.2 0.0 0.0 0.0
-            </pose>
-        
-                <link name="wall_14-base-link">
-                    <visual name="wall_14-visual">
-                        <geometry>
-                            <box>
-                                <size> 5 1 2.4 </size>
-                            </box>
-                        </geometry>
-                        <material>
-                          <diffuse>0.2 0.2 0.2 1</diffuse>
-                          <specular>0.1 0.1 0.1 1</specular>
-                        </material>
-                    </visual>
-                </link>
-            </model>
-        
             <model name="floor_13">
                 <static> true </static>
                 
             <pose> 
-                15.0 5.0 -0.5 0.0 0.0 0.0
+                10.0 0.0 -0.5 0.0 0.0 0.0
             </pose>
         
                 <link name="floor_13-base-link">
@@ -1031,7 +1153,7 @@
                 <static> true </static>
                 
             <pose> 
-                15.0 5.0 2.9 0.0 0.0 0.0
+                10.0 0.0 2.9 0.0 0.0 0.0
             </pose>
         
                 <link name="ceiling_13-base-link">
@@ -1060,11 +1182,179 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> office_chair_13 </name>
+                
+            <pose> 
+                10.0 0.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_14">
+                <static> true </static>
+                
+            <pose> 
+                10.0 -3.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_14-base-link">
+                    <visual name="wall_14-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_14">
+                <static> true </static>
+                
+            <pose> 
+                10.0 5.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_14-base-link">
+                    <visual name="floor_14-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_14">
+                <static> true </static>
+                
+            <pose> 
+                10.0 5.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_14-base-link">
+                    <visual name="ceiling_14-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_14-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_14 </name>
+                
+            <pose> 
+                10.0 5.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="floor_15">
+                <static> true </static>
+                
+            <pose> 
+                10.0 10.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_15-base-link">
+                    <visual name="floor_15-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_15">
+                <static> true </static>
+                
+            <pose> 
+                10.0 10.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_15-base-link">
+                    <visual name="ceiling_15-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_15-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_15 </name>
+                
+            <pose> 
+                10.0 10.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="wall_15">
                 <static> true </static>
                 
             <pose> 
-                18.0 5.0 1.2 0.0 0.0 1.570796326795
+                10.0 13.0 1.2 0.0 0.0 0.0
             </pose>
         
                 <link name="wall_15-base-link">
@@ -1082,15 +1372,1439 @@
                 </link>
             </model>
         
+            <model name="floor_16">
+                <static> true </static>
+                
+            <pose> 
+                15.0 0.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_16-base-link">
+                    <visual name="floor_16-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_16">
+                <static> true </static>
+                
+            <pose> 
+                15.0 0.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_16-base-link">
+                    <visual name="ceiling_16-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_16-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_16 </name>
+                
+            <pose> 
+                15.0 0.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
             <model name="wall_16">
                 <static> true </static>
                 
             <pose> 
-                15.0 8.0 1.2 0.0 0.0 0.0
+                18.0 0.0 1.2 0.0 0.0 1.570796326795
             </pose>
         
                 <link name="wall_16-base-link">
                     <visual name="wall_16-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_17">
+                <static> true </static>
+                
+            <pose> 
+                15.0 -3.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_17-base-link">
+                    <visual name="wall_17-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_17">
+                <static> true </static>
+                
+            <pose> 
+                15.0 5.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_17-base-link">
+                    <visual name="floor_17-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_17">
+                <static> true </static>
+                
+            <pose> 
+                15.0 5.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_17-base-link">
+                    <visual name="ceiling_17-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_17-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_17 </name>
+                
+            <pose> 
+                15.0 5.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="floor_18">
+                <static> true </static>
+                
+            <pose> 
+                15.0 10.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_18-base-link">
+                    <visual name="floor_18-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_18">
+                <static> true </static>
+                
+            <pose> 
+                15.0 10.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_18-base-link">
+                    <visual name="ceiling_18-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_18-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_18 </name>
+                
+            <pose> 
+                15.0 10.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="floor_19">
+                <static> true </static>
+                
+            <pose> 
+                15.0 15.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_19-base-link">
+                    <visual name="floor_19-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_19">
+                <static> true </static>
+                
+            <pose> 
+                15.0 15.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_19-base-link">
+                    <visual name="ceiling_19-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_19-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_19 </name>
+                
+            <pose> 
+                15.0 15.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_18">
+                <static> true </static>
+                
+            <pose> 
+                12.0 15.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_18-base-link">
+                    <visual name="wall_18-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_20">
+                <static> true </static>
+                
+            <pose> 
+                15.0 20.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_20-base-link">
+                    <visual name="floor_20-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_20">
+                <static> true </static>
+                
+            <pose> 
+                15.0 20.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_20-base-link">
+                    <visual name="ceiling_20-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_20-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_20 </name>
+                
+            <pose> 
+                15.0 20.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_19">
+                <static> true </static>
+                
+            <pose> 
+                12.0 20.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_19-base-link">
+                    <visual name="wall_19-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_21">
+                <static> true </static>
+                
+            <pose> 
+                15.0 25.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_21-base-link">
+                    <visual name="floor_21-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_21">
+                <static> true </static>
+                
+            <pose> 
+                15.0 25.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_21-base-link">
+                    <visual name="ceiling_21-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_21-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_21 </name>
+                
+            <pose> 
+                15.0 25.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_20">
+                <static> true </static>
+                
+            <pose> 
+                12.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_20-base-link">
+                    <visual name="wall_20-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_21">
+                <static> true </static>
+                
+            <pose> 
+                18.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_21-base-link">
+                    <visual name="wall_21-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_22">
+                <static> true </static>
+                
+            <pose> 
+                15.0 28.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_22-base-link">
+                    <visual name="wall_22-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_22">
+                <static> true </static>
+                
+            <pose> 
+                20.0 5.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_22-base-link">
+                    <visual name="floor_22-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_22">
+                <static> true </static>
+                
+            <pose> 
+                20.0 5.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_22-base-link">
+                    <visual name="ceiling_22-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_22-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_22 </name>
+                
+            <pose> 
+                20.0 5.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_23">
+                <static> true </static>
+                
+            <pose> 
+                20.0 2.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_23-base-link">
+                    <visual name="wall_23-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_23">
+                <static> true </static>
+                
+            <pose> 
+                20.0 10.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_23-base-link">
+                    <visual name="floor_23-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_23">
+                <static> true </static>
+                
+            <pose> 
+                20.0 10.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_23-base-link">
+                    <visual name="ceiling_23-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_23-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_23 </name>
+                
+            <pose> 
+                20.0 10.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="floor_24">
+                <static> true </static>
+                
+            <pose> 
+                20.0 15.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_24-base-link">
+                    <visual name="floor_24-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_24">
+                <static> true </static>
+                
+            <pose> 
+                20.0 15.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_24-base-link">
+                    <visual name="ceiling_24-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_24-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_24 </name>
+                
+            <pose> 
+                20.0 15.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="floor_25">
+                <static> true </static>
+                
+            <pose> 
+                20.0 20.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_25-base-link">
+                    <visual name="floor_25-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_25">
+                <static> true </static>
+                
+            <pose> 
+                20.0 20.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_25-base-link">
+                    <visual name="ceiling_25-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_25-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_25 </name>
+                
+            <pose> 
+                20.0 20.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_24">
+                <static> true </static>
+                
+            <pose> 
+                20.0 23.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_24-base-link">
+                    <visual name="wall_24-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_26">
+                <static> true </static>
+                
+            <pose> 
+                25.0 5.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_26-base-link">
+                    <visual name="floor_26-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_26">
+                <static> true </static>
+                
+            <pose> 
+                25.0 5.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_26-base-link">
+                    <visual name="ceiling_26-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_26-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_26 </name>
+                
+            <pose> 
+                25.0 5.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_25">
+                <static> true </static>
+                
+            <pose> 
+                28.0 5.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_25-base-link">
+                    <visual name="wall_25-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_26">
+                <static> true </static>
+                
+            <pose> 
+                25.0 2.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_26-base-link">
+                    <visual name="wall_26-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_27">
+                <static> true </static>
+                
+            <pose> 
+                25.0 10.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_27-base-link">
+                    <visual name="floor_27-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_27">
+                <static> true </static>
+                
+            <pose> 
+                25.0 10.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_27-base-link">
+                    <visual name="ceiling_27-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_27-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_27 </name>
+                
+            <pose> 
+                25.0 10.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_27">
+                <static> true </static>
+                
+            <pose> 
+                28.0 10.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_27-base-link">
+                    <visual name="wall_27-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_28">
+                <static> true </static>
+                
+            <pose> 
+                25.0 15.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_28-base-link">
+                    <visual name="floor_28-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_28">
+                <static> true </static>
+                
+            <pose> 
+                25.0 15.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_28-base-link">
+                    <visual name="ceiling_28-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_28-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_28 </name>
+                
+            <pose> 
+                25.0 15.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="floor_29">
+                <static> true </static>
+                
+            <pose> 
+                25.0 20.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_29-base-link">
+                    <visual name="floor_29-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_29">
+                <static> true </static>
+                
+            <pose> 
+                25.0 20.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_29-base-link">
+                    <visual name="ceiling_29-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_29-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_29 </name>
+                
+            <pose> 
+                25.0 20.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_28">
+                <static> true </static>
+                
+            <pose> 
+                25.0 23.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_28-base-link">
+                    <visual name="wall_28-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_30">
+                <static> true </static>
+                
+            <pose> 
+                30.0 15.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_30-base-link">
+                    <visual name="floor_30-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_30">
+                <static> true </static>
+                
+            <pose> 
+                30.0 15.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_30-base-link">
+                    <visual name="ceiling_30-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_30-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_30 </name>
+                
+            <pose> 
+                30.0 15.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_29">
+                <static> true </static>
+                
+            <pose> 
+                33.0 15.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_29-base-link">
+                    <visual name="wall_29-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_30">
+                <static> true </static>
+                
+            <pose> 
+                30.0 12.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_30-base-link">
+                    <visual name="wall_30-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="floor_31">
+                <static> true </static>
+                
+            <pose> 
+                30.0 20.0 -0.5 0.0 0.0 0.0
+            </pose>
+        
+                <link name="floor_31-base-link">
+                    <visual name="floor_31-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="ceiling_31">
+                <static> true </static>
+                
+            <pose> 
+                30.0 20.0 2.9 0.0 0.0 0.0
+            </pose>
+        
+                <link name="ceiling_31-base-link">
+                    <visual name="ceiling_31-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 5 1.0 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                    <light type="point" name="ceiling_31-light">
+                        <pose> 0 0 -1 0 0 0 </pose>
+                        <cast_shadows>false</cast_shadows>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <attenuation>
+                            <range>10</range>
+                            <constant>0.8</constant>
+                            <linear>0.05</linear>
+                            <quadratic>0.01</quadratic>
+                        </attenuation> 
+                    </light>
+                </link>
+            </model>
+        
+            <include>
+                <static> true </static>
+                <name> office_chair_31 </name>
+                
+            <pose> 
+                30.0 20.0 0 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey </uri>
+            </include>
+        
+            <model name="wall_31">
+                <static> true </static>
+                
+            <pose> 
+                33.0 20.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <link name="wall_31-base-link">
+                    <visual name="wall_31-visual">
+                        <geometry>
+                            <box>
+                                <size> 5 1 2.4 </size>
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        
+            <model name="wall_32">
+                <static> true </static>
+                
+            <pose> 
+                30.0 23.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <link name="wall_32-base-link">
+                    <visual name="wall_32-visual">
                         <geometry>
                             <box>
                                 <size> 5 1 2.4 </size>
