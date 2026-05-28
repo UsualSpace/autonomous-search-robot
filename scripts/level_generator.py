@@ -203,11 +203,15 @@ class Ceiling(Object):
         """
 
 class AABB:
-    def __init__(self):
-        pass
+    def __init__(self, points):
+        self.min_point = np.min(points, axis=0)
+        self.max_point = np.max(points, axis=0)
 
-    def intersects(self, other):
-        pass
+    def intersects(self, other_aabb):
+        condition = True
+        for i in range(len(min_point)):
+            condition = condition and self.min_point[i] <= other_aabb.max_point[i] && self.max_vertex[i] >= other_aabb.min_vertex[i]
+        return condition
 
 import requests
 import numpy as np
@@ -218,24 +222,26 @@ def loadVertices(configuration):
     #Fetch the data from gazebo fuel model library and switch logic 
     #based on file type (only .obj and .dae files expected for now)
     for model in models:
-        uri = model.uri + model.mesh_path
-        data = requests.get(uri).content
-        vertices = None
+        print(model)
+        uri = model["uri"] + model["mesh_path"]
+        data = requests.get(uri).content.decode()
+        vertices = []
         if uri.endswith(".obj"):
             #Interpret data as an obj file.
             lines = data.splitlines()
             for line in lines:
-                if line.startswith("v"):
+                if line.startswith("v "):
                     _, x, y, z = line.split()
-                    vertices.append([float(x), float(y), float(z)])
-                    vertices = np.array(vertices)
+                    vertices.append(np.array([float(x), float(y), float(z)]))
+            vertices = np.array(vertices)
         elif uri.endswith(".dae"):
             #Interpret data as a dae file.
+            #TODO: handle .dae files.
             pass
 
-        model_vertices[model.name] = vertices
+        model_vertices.update({model["name"]: vertices})
 
-
+    return model_vertices
 
 def compileSDF(objects):
     objects_str = ""
@@ -279,35 +285,61 @@ def generateFloorPlan(rows, columns, random_room_shape, growth_steps, seed):
 
     return room
 
-def generateLevel(configuration, seed):
+def placeModels(configuration, room, seed, model_vertices):
+    #NOTE: Idea, map multiple rectangular kernels to random parts of the room and assign model groups to them for spawning.
+    #Each mapped kernel can have either a uniform grid item layout or a randomly scattered item layout.
+    region_kernels = [[2, 3], [2,2], [3, 2]]
+    iterations = 10
+   
+    #To store placed models.
+    model_objects = []
+
+    #Obtain set of cells that are open.
+    rows = configuration["max_cell_rows"]
+    columns = configuration["max_cell_columns"]
+    open_cell_coords = []
+    for row in range(rows):
+        for column in range(columns):
+            if room[row][column]:
+                open_cell_coords.append((row, column))
+
+    region_AABBs = []
+    for i in range(iterations):
+        chosen_cell_coord = random.choice(open_cell_coords)
+        chosen_kernel = random.choice(region_kernels)
+        region_corners = [chosen_cell_coord, (chosen_cell_coord[0] + chosen_kernel[0], chosen_cell_coord[1] + chosen_kernel[1])]
+        region_AABB = AABB(region_corners)
+
+        #Check if it intersects any previously defined regions.
+        for aabb in region_AABBs:
+            if region_AABB.intersects(aabb): continue
+        
+        region_AABBs.append(region_AABB)
+
+        #Select either a uniform or random layout within this particular region. 
+        #TODO: add support for uniform layout
+
+        density = 0.3
+        max_models_per_region = 10
+        temp_model = configuration["floor_models"][0]
+        for j in range(max_models_per_region):
+            rand_angle = random.uniform(0, 360)
+
+
+
+
+
+    
+
+def generateLevel(configuration, seed, model_vertices):
     rows = configuration["max_cell_rows"]
     columns = configuration["max_cell_columns"]
     cell_size = configuration["cell_size"]
     ceiling_height = configuration["ceiling_height"]
     wall_thickness = configuration["wall_thickness"]
    
-    #Prompt user to accept floor plan or regenerate.
-    answer = ""
-    current_seed = seed
-    while answer != "accept":
-        random.seed(current_seed)
-        room = generateFloorPlan(rows, columns, configuration["random_room_shape"], configuration["random_growth_steps"], seed)
-        print(f"Generated floor plan with SEED={current_seed} :")
-        floor_plan_str = ""
-        for row in range(rows):
-            for column in range(columns):
-                floor_plan_str += "#" if room[row][column] == 0 else " "
-            floor_plan_str += "\n"
-        
-        print(floor_plan_str)
-
-        answer = input("accept/regen? ")
-        if answer == "regen":
-            current_seed = int(input("Please enter an integer seed: "))
-            continue
-        else:
-            break
-
+    random.seed(seed)
+    room = generateFloorPlan(rows, columns, configuration["random_room_shape"], configuration["random_growth_steps"], seed)
     
     objects = []
 
@@ -323,20 +355,10 @@ def generateLevel(configuration, seed):
             floor_position = (cell_center[0], cell_center[1], -0.5)
             floor = Floor(position=floor_position, floor_size=cell_size)
             ceiling_position = (cell_center[0], cell_center[1], ceiling_height + 0.5)
-            ceiling = Ceiling(position=ceiling_position, ceiling_size=cell_size)
-           
-            
+            ceiling = Ceiling(position=ceiling_position, ceiling_size=cell_size) 
 
             objects.append(floor)
             objects.append(ceiling)
-
-            #NOTE: place a chair on each floor for testing.
-            models = configuration["floor_models"]
-            chair = models[0]
-            chair = Model(name=chair["name"], position=cell_center, uri=chair["uri"])
-            objects.append(chair)
-            wall_models = configuration["wall_models"]
-            cabinet = wall_models[0]
 
             #Wall pass. 
             nc = [(-1, 0), (1, 0), (0, 1), (0, -1)] #neighbor coordinate offsets, North, South, East, West.
@@ -367,9 +389,6 @@ def generateLevel(configuration, seed):
                     )
 
                     objects.append(wall) 
-                    cabinet_obj = Model(name=cabinet["name"], position=cabinet_position, rotation=(0, 0, 90 if not (c[0] == 0) else 0), uri=cabinet["uri"])
-                    objects.append(cabinet_obj)
-
 
     return objects
       
@@ -405,9 +424,12 @@ def main():
     with open(configuration_path, "r") as f:
         json_str = f.read()
         configuration = json.loads(json_str)
-    
+   
+    #Load all model mesh vertices that will be needed during generation.
+    model_vertices = loadVertices(configuration)
+
     #Generate the level, convert to sdf format, and then write to the destination path.
-    level_sdf = compileSDF(generateLevel(configuration, seed))
+    level_sdf = compileSDF(generateLevel(configuration, seed, model_vertices))
     with open(destination_path, "w") as f:
         f.write(level_sdf)
 
