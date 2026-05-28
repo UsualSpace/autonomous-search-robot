@@ -202,6 +202,40 @@ class Ceiling(Object):
             </model>
         """
 
+class AABB:
+    def __init__(self):
+        pass
+
+    def intersects(self, other):
+        pass
+
+import requests
+import numpy as np
+def loadVertices(configuration):
+    models = configuration["floor_models"] + configuration["wall_models"]
+    model_vertices = {}
+
+    #Fetch the data from gazebo fuel model library and switch logic 
+    #based on file type (only .obj and .dae files expected for now)
+    for model in models:
+        uri = model.uri + model.mesh_path
+        data = requests.get(uri).content
+        vertices = None
+        if uri.endswith(".obj"):
+            #Interpret data as an obj file.
+            lines = data.splitlines()
+            for line in lines:
+                if line.startswith("v"):
+                    _, x, y, z = line.split()
+                    vertices.append([float(x), float(y), float(z)])
+                    vertices = np.array(vertices)
+        elif uri.endswith(".dae"):
+            #Interpret data as a dae file.
+            pass
+
+        model_vertices[model.name] = vertices
+
+
 
 def compileSDF(objects):
     objects_str = ""
@@ -290,15 +324,19 @@ def generateLevel(configuration, seed):
             floor = Floor(position=floor_position, floor_size=cell_size)
             ceiling_position = (cell_center[0], cell_center[1], ceiling_height + 0.5)
             ceiling = Ceiling(position=ceiling_position, ceiling_size=cell_size)
+           
             
+
             objects.append(floor)
             objects.append(ceiling)
 
             #NOTE: place a chair on each floor for testing.
-            models = configuration["general_models"]
+            models = configuration["floor_models"]
             chair = models[0]
             chair = Model(name=chair["name"], position=cell_center, uri=chair["uri"])
             objects.append(chair)
+            wall_models = configuration["wall_models"]
+            cabinet = wall_models[0]
 
             #Wall pass. 
             nc = [(-1, 0), (1, 0), (0, 1), (0, -1)] #neighbor coordinate offsets, North, South, East, West.
@@ -313,6 +351,13 @@ def generateLevel(configuration, seed):
                         ceiling_height * 0.5
                     )
 
+
+                    cabinet_position = (
+                        cell_center[0] + c[0] * cell_size * 0.5 - c[0] * wall_thickness * 0.5,
+                        cell_center[1] + c[1] * cell_size * 0.5 - c[1] * wall_thickness * 0.5,
+                        ceiling_height * 0.5
+                    )
+
                     wall = Wall(
                         position=wall_position, 
                         aligned_y=not (c[0] == 0), 
@@ -321,7 +366,9 @@ def generateLevel(configuration, seed):
                         wall_thickness=wall_thickness
                     )
 
-                    objects.append(wall)
+                    objects.append(wall) 
+                    cabinet_obj = Model(name=cabinet["name"], position=cabinet_position, rotation=(0, 0, 90 if not (c[0] == 0) else 0), uri=cabinet["uri"])
+                    objects.append(cabinet_obj)
 
 
     return objects

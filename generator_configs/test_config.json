@@ -6,13 +6,25 @@
 	"wall_thickness": 1,
 	"random_room_shape": true,
 	"random_growth_steps": 15,
-	"random_openness": false,
-	"general_models": [
+	"floor_models": [
 		{
 			"name": "office_chair",
 			"forward_vector": [0, 0, 1],
-			"uri": "https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey"
+			"uri": "https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey",
+			"mesh_path": "/1/files/meshes/OfficeChairGrey.obj"
+		}
+	],
+	"wall_models": [	
+		{
+			"name": "cabinet",
+			"forward_vector": [0, 0, 1],
+			"uri": "https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet",
+			"mesh_path": "/2/files/meshes/WhiteCabinet.obj"
 		}	
 	],
-	"unqiue_model_uris": []
+	"model_groups": [
+		[],
+		[],
+		[]
+	]
 }

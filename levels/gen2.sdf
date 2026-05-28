@@ -126,6 +126,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_2 </name>
+                
+            <pose> 
+                -2.0 0.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_2">
                 <static> true </static>
                 
@@ -147,6 +159,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_3 </name>
+                
+            <pose> 
+                0.0 -2.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_2">
                 <static> true </static>
@@ -205,7 +229,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_2 </name>
+                <name> office_chair_4 </name>
                 
             <pose> 
                 0.0 5.0 0 0.0 0.0 0.0
@@ -236,6 +260,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_5 </name>
+                
+            <pose> 
+                -2.0 5.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_3">
                 <static> true </static>
@@ -294,7 +330,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_3 </name>
+                <name> office_chair_6 </name>
                 
             <pose> 
                 0.0 10.0 0 0.0 0.0 0.0
@@ -325,6 +361,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_7 </name>
+                
+            <pose> 
+                -2.0 10.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_4">
                 <static> true </static>
@@ -383,7 +431,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_4 </name>
+                <name> office_chair_8 </name>
                 
             <pose> 
                 0.0 15.0 0 0.0 0.0 0.0
@@ -414,6 +462,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_9 </name>
+                
+            <pose> 
+                -2.0 15.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_5">
                 <static> true </static>
@@ -472,7 +532,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_5 </name>
+                <name> office_chair_10 </name>
                 
             <pose> 
                 0.0 20.0 0 0.0 0.0 0.0
@@ -503,6 +563,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_11 </name>
+                
+            <pose> 
+                -2.0 20.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_6">
                 <static> true </static>
@@ -561,7 +633,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_6 </name>
+                <name> office_chair_12 </name>
                 
             <pose> 
                 0.0 25.0 0 0.0 0.0 0.0
@@ -593,6 +665,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_13 </name>
+                
+            <pose> 
+                -2.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_8">
                 <static> true </static>
                 
@@ -614,6 +698,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_14 </name>
+                
+            <pose> 
+                0.0 27.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_7">
                 <static> true </static>
@@ -672,7 +768,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_7 </name>
+                <name> office_chair_15 </name>
                 
             <pose> 
                 5.0 0.0 0 0.0 0.0 0.0
@@ -703,6 +799,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_16 </name>
+                
+            <pose> 
+                5.0 -2.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_8">
                 <static> true </static>
@@ -761,7 +869,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_8 </name>
+                <name> office_chair_17 </name>
                 
             <pose> 
                 5.0 5.0 0 0.0 0.0 0.0
@@ -828,7 +936,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_9 </name>
+                <name> office_chair_18 </name>
                 
             <pose> 
                 5.0 10.0 0 0.0 0.0 0.0
@@ -895,7 +1003,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_10 </name>
+                <name> office_chair_19 </name>
                 
             <pose> 
                 5.0 15.0 0 0.0 0.0 0.0
@@ -926,6 +1034,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_20 </name>
+                
+            <pose> 
+                7.0 15.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_11">
                 <static> true </static>
@@ -984,7 +1104,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_11 </name>
+                <name> office_chair_21 </name>
                 
             <pose> 
                 5.0 20.0 0 0.0 0.0 0.0
@@ -1015,6 +1135,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_22 </name>
+                
+            <pose> 
+                7.0 20.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_12">
                 <static> true </static>
@@ -1073,7 +1205,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_12 </name>
+                <name> office_chair_23 </name>
                 
             <pose> 
                 5.0 25.0 0 0.0 0.0 0.0
@@ -1105,6 +1237,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_24 </name>
+                
+            <pose> 
+                7.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_13">
                 <static> true </static>
                 
@@ -1126,6 +1270,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_25 </name>
+                
+            <pose> 
+                5.0 27.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_13">
                 <static> true </static>
@@ -1184,7 +1340,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_13 </name>
+                <name> office_chair_26 </name>
                 
             <pose> 
                 10.0 0.0 0 0.0 0.0 0.0
@@ -1215,6 +1371,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_27 </name>
+                
+            <pose> 
+                10.0 -2.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_14">
                 <static> true </static>
@@ -1273,7 +1441,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_14 </name>
+                <name> office_chair_28 </name>
                 
             <pose> 
                 10.0 5.0 0 0.0 0.0 0.0
@@ -1340,7 +1508,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_15 </name>
+                <name> office_chair_29 </name>
                 
             <pose> 
                 10.0 10.0 0 0.0 0.0 0.0
@@ -1371,6 +1539,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_30 </name>
+                
+            <pose> 
+                10.0 12.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_16">
                 <static> true </static>
@@ -1429,7 +1609,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_16 </name>
+                <name> office_chair_31 </name>
                 
             <pose> 
                 15.0 0.0 0 0.0 0.0 0.0
@@ -1461,6 +1641,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_32 </name>
+                
+            <pose> 
+                17.0 0.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_17">
                 <static> true </static>
                 
@@ -1482,6 +1674,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_33 </name>
+                
+            <pose> 
+                15.0 -2.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_17">
                 <static> true </static>
@@ -1540,7 +1744,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_17 </name>
+                <name> office_chair_34 </name>
                 
             <pose> 
                 15.0 5.0 0 0.0 0.0 0.0
@@ -1607,7 +1811,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_18 </name>
+                <name> office_chair_35 </name>
                 
             <pose> 
                 15.0 10.0 0 0.0 0.0 0.0
@@ -1674,7 +1878,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_19 </name>
+                <name> office_chair_36 </name>
                 
             <pose> 
                 15.0 15.0 0 0.0 0.0 0.0
@@ -1705,6 +1909,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_37 </name>
+                
+            <pose> 
+                13.0 15.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_20">
                 <static> true </static>
@@ -1763,7 +1979,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_20 </name>
+                <name> office_chair_38 </name>
                 
             <pose> 
                 15.0 20.0 0 0.0 0.0 0.0
@@ -1794,6 +2010,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_39 </name>
+                
+            <pose> 
+                13.0 20.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_21">
                 <static> true </static>
@@ -1852,7 +2080,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_21 </name>
+                <name> office_chair_40 </name>
                 
             <pose> 
                 15.0 25.0 0 0.0 0.0 0.0
@@ -1884,6 +2112,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_41 </name>
+                
+            <pose> 
+                13.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_21">
                 <static> true </static>
                 
@@ -1906,6 +2146,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_42 </name>
+                
+            <pose> 
+                17.0 25.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_22">
                 <static> true </static>
                 
@@ -1927,6 +2179,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_43 </name>
+                
+            <pose> 
+                15.0 27.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_22">
                 <static> true </static>
@@ -1985,7 +2249,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_22 </name>
+                <name> office_chair_44 </name>
                 
             <pose> 
                 20.0 5.0 0 0.0 0.0 0.0
@@ -2016,6 +2280,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_45 </name>
+                
+            <pose> 
+                20.0 3.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_23">
                 <static> true </static>
@@ -2074,7 +2350,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_23 </name>
+                <name> office_chair_46 </name>
                 
             <pose> 
                 20.0 10.0 0 0.0 0.0 0.0
@@ -2141,7 +2417,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_24 </name>
+                <name> office_chair_47 </name>
                 
             <pose> 
                 20.0 15.0 0 0.0 0.0 0.0
@@ -2208,7 +2484,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_25 </name>
+                <name> office_chair_48 </name>
                 
             <pose> 
                 20.0 20.0 0 0.0 0.0 0.0
@@ -2239,6 +2515,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_49 </name>
+                
+            <pose> 
+                20.0 22.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_26">
                 <static> true </static>
@@ -2297,7 +2585,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_26 </name>
+                <name> office_chair_50 </name>
                 
             <pose> 
                 25.0 5.0 0 0.0 0.0 0.0
@@ -2329,6 +2617,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_51 </name>
+                
+            <pose> 
+                27.0 5.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_26">
                 <static> true </static>
                 
@@ -2350,6 +2650,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_52 </name>
+                
+            <pose> 
+                25.0 3.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_27">
                 <static> true </static>
@@ -2408,7 +2720,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_27 </name>
+                <name> office_chair_53 </name>
                 
             <pose> 
                 25.0 10.0 0 0.0 0.0 0.0
@@ -2439,6 +2751,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_54 </name>
+                
+            <pose> 
+                27.0 10.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_28">
                 <static> true </static>
@@ -2497,7 +2821,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_28 </name>
+                <name> office_chair_55 </name>
                 
             <pose> 
                 25.0 15.0 0 0.0 0.0 0.0
@@ -2564,7 +2888,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_29 </name>
+                <name> office_chair_56 </name>
                 
             <pose> 
                 25.0 20.0 0 0.0 0.0 0.0
@@ -2595,6 +2919,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_57 </name>
+                
+            <pose> 
+                25.0 22.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_30">
                 <static> true </static>
@@ -2653,7 +2989,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_30 </name>
+                <name> office_chair_58 </name>
                 
             <pose> 
                 30.0 15.0 0 0.0 0.0 0.0
@@ -2685,6 +3021,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_59 </name>
+                
+            <pose> 
+                32.0 15.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_30">
                 <static> true </static>
                 
@@ -2706,6 +3054,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_60 </name>
+                
+            <pose> 
+                30.0 13.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
             <model name="floor_31">
                 <static> true </static>
@@ -2764,7 +3124,7 @@
         
             <include>
                 <static> true </static>
-                <name> office_chair_31 </name>
+                <name> office_chair_61 </name>
                 
             <pose> 
                 30.0 20.0 0 0.0 0.0 0.0
@@ -2796,6 +3156,18 @@
                 </link>
             </model>
         
+            <include>
+                <static> true </static>
+                <name> cabinet_62 </name>
+                
+            <pose> 
+                32.0 20.0 1.2 0.0 0.0 1.570796326795
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
+        
             <model name="wall_32">
                 <static> true </static>
                 
@@ -2817,6 +3189,18 @@
                     </visual>
                 </link>
             </model>
+        
+            <include>
+                <static> true </static>
+                <name> cabinet_63 </name>
+                
+            <pose> 
+                30.0 22.0 1.2 0.0 0.0 0.0
+            </pose>
+        
+                <scale> 1 1 1 </scale>
+                <uri> https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet </uri>
+            </include>
         
                 
 
