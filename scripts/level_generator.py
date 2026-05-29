@@ -130,7 +130,6 @@ class Wall(Object):
             </model>
         """
 
-
 class Floor(Object):
     count = 0 #To provide each floor in the gazebo simulation a unique name.
 
@@ -202,16 +201,61 @@ class Ceiling(Object):
             </model>
         """
 
+class Box(Object):
+    count = 0 #To provide each floor in the gazebo simulation a unique name.
+
+    def __init__(self, position=(0,0,0), scale=(1,1,1)):
+        Box.count += 1
+        name = f"box_{Box.count}"
+        super().__init__(name, position, (0,0,0), scale)
+
+    def toXMLStr(self):
+        return f"""
+            <model name="{self.name}">
+                <static> true </static>
+                {self.poseXMLStr()}
+                <link name="{self.name + "-base-link"}">
+                    <visual name="{self.name + "-visual"}">
+                        <geometry>
+                            <box>
+                                {self.scaleXMLStr(is_primitive=True)}
+                            </box>
+                        </geometry>
+                        <material>
+                          <diffuse>0.2 0.2 0.2 1</diffuse>
+                          <specular>0.1 0.1 0.1 1</specular>
+                        </material>
+                    </visual>
+                </link>
+            </model>
+        """
+
 class AABB:
     def __init__(self, points):
+        self.points = points
         self.min_point = np.min(points, axis=0)
         self.max_point = np.max(points, axis=0)
+        self.translated_min = self.min_point
+        self.translated_max = self.max_point
 
-    def intersects(self, other_aabb):
-        condition = True
-        for i in range(len(min_point)):
-            condition = condition and self.min_point[i] <= other_aabb.max_point[i] && self.max_vertex[i] >= other_aabb.min_vertex[i]
-        return condition
+    def intersects(self, other):
+        if self.min_point.shape != other.min_point.shape:
+            raise ValueError("Dimension mismatch")
+        return np.all(
+            (self.translated_min <= other.translated_max) &
+            (self.translated_max >= other.translated_min)
+        )
+
+    def setPosition(self, position):
+        position = np.array(position)
+        self.translated_min = self.min_point + position
+        self.translated_max = self.max_point + position
+
+    def setRotation(rotation):
+        pass
+
+    def getScale(self):
+        return (self.max_point[0] - self.min_point[0], self.max_point[1] - self.min_point[1], self.max_point[2] - self.min_point[2])
 
 import requests
 import numpy as np
@@ -264,10 +308,6 @@ def generateFloorPlan(rows, columns, random_room_shape, growth_steps, seed):
         for i in range(growth_steps):
             pattern = random.choice(growth_patterns)
             random_active_cell = random.choice(active_cell_coords)
-            attempts = 10 
-            #while attempts > 0 and random_active_cell not in chosen_cell_coords:
-            #    random_active_cell = random.choice(active_cell_coords)
-            #    attempts -= 1
             chosen_cell_coords.append(random_active_cell)
             for row in range(pattern[0]):
                 for column in range(pattern[1]):
@@ -285,10 +325,10 @@ def generateFloorPlan(rows, columns, random_room_shape, growth_steps, seed):
 
     return room
 
-def placeModels(configuration, room, seed, model_vertices):
+def placeModels(configuration, room, model_vertices):
     #NOTE: Idea, map multiple rectangular kernels to random parts of the room and assign model groups to them for spawning.
     #Each mapped kernel can have either a uniform grid item layout or a randomly scattered item layout.
-    region_kernels = [[2, 3], [2,2], [3, 2]]
+    region_kernels = [(2, 3), (2,2), (3, 2)]
     iterations = 10
    
     #To store placed models.
@@ -304,16 +344,37 @@ def placeModels(configuration, room, seed, model_vertices):
                 open_cell_coords.append((row, column))
 
     region_AABBs = []
+    cell_size = configuration["cell_size"]
+    ceiling_height = configuration["ceiling_height"]
     for i in range(iterations):
         chosen_cell_coord = random.choice(open_cell_coords)
         chosen_kernel = random.choice(region_kernels)
-        region_corners = [chosen_cell_coord, (chosen_cell_coord[0] + chosen_kernel[0], chosen_cell_coord[1] + chosen_kernel[1])]
+
+        #TODO:Kernel must be clipped if it breaches walls.
+
+
+        #Convert to world space coordinates.
+        chosen_cell_coord = ((chosen_cell_coord[0] - 0.5 * rows) * cell_size, (chosen_cell_coord[1] - 0.5 * columns) * cell_size, 0)
+        chosen_kernel = (chosen_kernel[0] * cell_size, chosen_kernel[1] * cell_size)
+        region_corners = [
+                chosen_cell_coord,
+                (
+                    chosen_cell_coord[0] + chosen_kernel[0], 
+                    chosen_cell_coord[1] + chosen_kernel[1],
+                    ceiling_height
+                )
+        ]
         region_AABB = AABB(region_corners)
 
         #Check if it intersects any previously defined regions.
+        flag = False
         for aabb in region_AABBs:
-            if region_AABB.intersects(aabb): continue
-        
+            if region_AABB.intersects(aabb): 
+                flag = True
+                break
+       
+        #if flag: continue
+
         region_AABBs.append(region_AABB)
 
         #Select either a uniform or random layout within this particular region. 
@@ -322,14 +383,42 @@ def placeModels(configuration, room, seed, model_vertices):
         density = 0.3
         max_models_per_region = 10
         temp_model = configuration["floor_models"][0]
+        region_model_objects = []
+        region_model_AABBs = []
         for j in range(max_models_per_region):
             rand_angle = random.uniform(0, 360)
+            rand_position = (
+                chosen_cell_coord[0] + random.uniform(0, chosen_kernel[0]),
+                chosen_cell_coord[1] + random.uniform(0, chosen_kernel[1]),
+                0
+            )
+            
+            #Check if model intersects region bounds or bounds of any other models in the region
+            model_AABB = AABB(model_vertices[temp_model["name"]])
+            rand_position = (rand_position[0], rand_position[1], model_AABB.getScale()[2] / 2 + 0.0001)
+            model_AABB.setPosition(rand_position)            
+            
+            #if model_AABB.intersects(region_AABB): continue
 
+            flag = False
+            for aabb in region_model_AABBs:
+                if model_AABB.intersects(aabb):
+                    flag = True
+                    print("Couldnt place object")
+                    break
 
+            if flag: continue
 
+            region_model_AABBs.append(model_AABB)
 
+            #Place model in the scene.
+            #Getting scale of object to place it ontop of floor
+            region_model_objects.append(Box(position=rand_position, scale=model_AABB.getScale()))
+            #region_model_objects.append(Model(temp_model["name"], position=rand_position, uri=temp_model["uri"]))
+        #Now dump all region level models into the global models list.
+        model_objects += region_model_objects
 
-    
+    return model_objects
 
 def generateLevel(configuration, seed, model_vertices):
     rows = configuration["max_cell_rows"]
@@ -373,13 +462,6 @@ def generateLevel(configuration, seed, model_vertices):
                         ceiling_height * 0.5
                     )
 
-
-                    cabinet_position = (
-                        cell_center[0] + c[0] * cell_size * 0.5 - c[0] * wall_thickness * 0.5,
-                        cell_center[1] + c[1] * cell_size * 0.5 - c[1] * wall_thickness * 0.5,
-                        ceiling_height * 0.5
-                    )
-
                     wall = Wall(
                         position=wall_position, 
                         aligned_y=not (c[0] == 0), 
@@ -389,7 +471,8 @@ def generateLevel(configuration, seed, model_vertices):
                     )
 
                     objects.append(wall) 
-
+    
+    objects += placeModels(configuration, room, model_vertices)
     return objects
       
 
