@@ -292,7 +292,7 @@ class AABB:
         pass
 
     def getScale(self):
-        return (self.max_point[0] - self.min_point[0], self.max_point[1] - self.min_point[1], self.max_point[2] - self.min_point[2])
+        return (abs(self.max_point[0] - self.min_point[0]), abs(self.max_point[1] - self.min_point[1]), (self.max_point[2] - self.min_point[2]))
 
 import requests, collada, io
 import numpy as np
@@ -315,6 +315,8 @@ def extract_transformed_vertices(data: bytes) -> np.ndarray:
     all_verts = []
     for bound_geom in col.scene.objects("geometry"):
         for prim in bound_geom.primitives():
+            if prim.vertex is None:
+                continue
             all_verts.append(prim.vertex * unit_scale)  # already world-space from BoundPrimitive
  
     return np.vstack(all_verts) if all_verts else np.empty((0, 3), dtype=np.float64)
@@ -337,7 +339,7 @@ def loadVertices(configuration):
                     _, x, y, z = line.split()
                     vertices.append(np.array([float(x), float(y), float(z)]))
             vertices = np.array(vertices)
-        elif uri.endswith(".dae"):
+        elif uri.endswith(".dae") or uri.endswith(".DAE"):
             #Interpret data as a dae file.
             vertices = extract_transformed_vertices(data)
         
@@ -417,14 +419,14 @@ def placeModels(configuration, room, model_vertices):
     starting_angle = configuration["robot"]["starting_angle"]
     robot_SafeAABB = AABB(np.array(
         [
-            [-safe_meters, -safe_meters, ceiling_height],
+            [-safe_meters, -safe_meters, 0],
             [safe_meters, safe_meters, ceiling_height]
         ]
     ))
     robot_SafeAABB.setPosition(robot_position)
 
-    #model_objects.append(Robot(name="robot", position=robot_position, rotation=(0, 0, starting_angle), scale=(1, 1, 1)))
-    model_objects.append(Box(position=robot_position, scale=robot_SafeAABB.getScale()))
+    model_objects.append(Robot(name="robot", position=robot_position, rotation=(0, 0, starting_angle), scale=(1, 1, 1)))
+    #model_objects.append(Box(position=robot_position, scale=robot_SafeAABB.getScale()))
     unique_AABBs.append(robot_SafeAABB)
 
     for model in configuration["unique_models"]:

@@ -2,12 +2,12 @@
 	"cell_size": 5,
 	"max_cell_rows": 7,
 	"max_cell_columns": 9,
-	"ceiling_height": 2.4,
+	"ceiling_height": 4,
 	"wall_thickness": 1,
 	"random_room_shape": false,
 	"random_growth_steps": 15,
 	"robot": {
-		"safe_meters": 3,
+		"safe_meters": 5,
 		"starting_angle": 0
 	},
 	"floor_models": [
