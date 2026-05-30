@@ -7,43 +7,33 @@
 
 PI = 3.14159265359
 world_template = """
-<?xml version="1.0" ?>
-<sdf version="1.8">
-        <world name="RG1">
-                <physics name="1ms" type="ignored">
-                        <max_step_size>0.001</max_step_size>
-                        <real_time_factor>1.0</real_time_factor>
-                </physics>
-                <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"></plugin>
-                <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"></plugin>
-                <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
-                <plugin filename="MinimalScene" name="3D View">
-                        <gz-gui>
-                                <title>3D View</title>
-                                <property type="bool" key="showTitleBar">false</property>
-                                <property type="string" key="state">docked</property>
-                        </gz-gui>
-                        <engine>ogre2</engine>
-                        <scene>scene</scene>
-                        <ambient_light>0.4 0.4 0.4</ambient_light>
-                        <background_color>0.8 0.8 0.8</background_color>
-                        <camera_pose>-6 0 6 0 0.5 0</camera_pose>
-                        <camera_clip>
-                                <near>0.25</near>
-                                <far>25000</far>
-                        </camera_clip>
-                </plugin>
-                <plugin filename="GzSceneManager" name="Scene Manager">
-                        <gz-gui>
-                                <property key="resizable" type="bool">false</property>
-                                <property key="width" type="double">5</property>
-                                <property key="height" type="double">5</property>
-                                <property key="state" type="string">floating</property>
-                                <property key="showTitleBar" type="bool">false</property>
-                        </gz-gui>
-                </plugin>
 
-                
+<?xml version="1.0" ?>
+<sdf version="1.7">
+        <world name="RG1">
+                <plugin
+                      filename="gz-sim-physics-system"
+                      name="gz::sim::systems::Physics">
+                </plugin>
+                <plugin
+                    filename="gz-sim-sensors-system"
+                    name="gz::sim::systems::Sensors">
+                    <render_engine>ogre2</render_engine>
+                </plugin>
+                <plugin
+                    filename="gz-sim-scene-broadcaster-system"
+                    name="gz::sim::systems::SceneBroadcaster">
+                </plugin>
+                <plugin
+                    filename="gz-sim-user-commands-system"
+                    name="gz::sim::systems::UserCommands">
+                </plugin>  
+                <physics name="fast" type="ignored">
+                    <max_step_size>0.004</max_step_size>
+                    <real_time_factor>1</real_time_factor>
+                </physics>
+
+
                 [INSERT]
                 
 
@@ -126,6 +116,13 @@ class Wall(Object):
                           <specular>0.1 0.1 0.1 1</specular>
                         </material>
                     </visual>
+                    <collision name="{self.name + '-collision'}">
+                        <geometry>
+                            <box>
+                                {self.scaleXMLStr(is_primitive=True)}
+                            </box>
+                        </geometry>
+                    </collision>
                 </link>
             </model>
         """
@@ -156,6 +153,13 @@ class Floor(Object):
                           <specular>0.1 0.1 0.1 1</specular>
                         </material>
                     </visual>
+                    <collision name="{self.name + '-collision'}">
+                        <geometry>
+                            <box>
+                                {self.scaleXMLStr(is_primitive=True)}
+                            </box>
+                        </geometry>
+                    </collision>
                 </link>
             </model>
         """
@@ -186,6 +190,13 @@ class Ceiling(Object):
                           <specular>0.1 0.1 0.1 1</specular>
                         </material>
                     </visual>
+                    <collision name="{self.name + '-collision'}">
+                        <geometry>
+                            <box>
+                                {self.scaleXMLStr(is_primitive=True)}
+                            </box>
+                        </geometry>
+                    </collision>
                     <light type="point" name="{self.name + "-light"}">
                         <pose> 0 0 -1 0 0 0 </pose>
                         <cast_shadows>false</cast_shadows>
@@ -226,8 +237,25 @@ class Box(Object):
                           <specular>0.1 0.1 0.1 1</specular>
                         </material>
                     </visual>
+                    <collision name="{self.name + '-collision'}">
+                        <geometry>
+                            <box>
+                                {self.scaleXMLStr(is_primitive=True)}
+                            </box>
+                        </geometry>
+                    </collision>
                 </link>
             </model>
+        """
+
+class Robot(Object): 
+    def toXMLStr(self):
+        return f"""
+            <include>
+                <name>robot</name>
+                <uri>model://my_robot_description</uri>
+                {self.poseXMLStr()}
+            </include>
         """
 
 class AABB:
@@ -246,6 +274,15 @@ class AABB:
             (self.translated_max >= other.translated_min)
         )
 
+    def inside(self, other):
+        if self.min_point.shape != other.min_point.shape:
+            raise ValueError("Dimension mismatch")
+        return np.all(
+            (self.translated_min >= other.translated_min) &
+            (self.translated_max <= other.translated_max)
+        )
+
+
     def setPosition(self, position):
         position = np.array(position)
         self.translated_min = self.min_point + position
@@ -257,22 +294,44 @@ class AABB:
     def getScale(self):
         return (self.max_point[0] - self.min_point[0], self.max_point[1] - self.min_point[1], self.max_point[2] - self.min_point[2])
 
-import requests
+import requests, collada, io
 import numpy as np
+
+def extract_transformed_vertices(data: bytes) -> np.ndarray:
+    """
+    Parse a COLLADA .dae file from raw bytes and return all world-space vertices.
+ 
+    Args:
+        data: Raw bytes of the .dae file.
+ 
+    Returns:
+        np.ndarray of shape (N, 3) — XYZ world-space positions of every vertex
+        across all meshes and primitive sets in the scene.
+    """
+    #This function was written by Claude
+    col = collada.Collada(io.BytesIO(data))
+    unit_scale = col.assetInfo.unitmeter or 1.0  # metres per file unit (e.g. 0.01 for cm)
+ 
+    all_verts = []
+    for bound_geom in col.scene.objects("geometry"):
+        for prim in bound_geom.primitives():
+            all_verts.append(prim.vertex * unit_scale)  # already world-space from BoundPrimitive
+ 
+    return np.vstack(all_verts) if all_verts else np.empty((0, 3), dtype=np.float64)
+
 def loadVertices(configuration):
-    models = configuration["floor_models"] + configuration["wall_models"]
+    models = configuration["floor_models"] + configuration["wall_models"] + configuration["unique_models"]
     model_vertices = {}
 
     #Fetch the data from gazebo fuel model library and switch logic 
     #based on file type (only .obj and .dae files expected for now)
     for model in models:
-        print(model)
         uri = model["uri"] + model["mesh_path"]
-        data = requests.get(uri).content.decode()
+        data = requests.get(uri).content
         vertices = []
         if uri.endswith(".obj"):
             #Interpret data as an obj file.
-            lines = data.splitlines()
+            lines = data.decode().splitlines()
             for line in lines:
                 if line.startswith("v "):
                     _, x, y, z = line.split()
@@ -280,9 +339,8 @@ def loadVertices(configuration):
             vertices = np.array(vertices)
         elif uri.endswith(".dae"):
             #Interpret data as a dae file.
-            #TODO: handle .dae files.
-            pass
-
+            vertices = extract_transformed_vertices(data)
+        
         model_vertices.update({model["name"]: vertices})
 
     return model_vertices
@@ -328,8 +386,10 @@ def generateFloorPlan(rows, columns, random_room_shape, growth_steps, seed):
 def placeModels(configuration, room, model_vertices):
     #NOTE: Idea, map multiple rectangular kernels to random parts of the room and assign model groups to them for spawning.
     #Each mapped kernel can have either a uniform grid item layout or a randomly scattered item layout.
-    region_kernels = [(2, 3), (2,2), (3, 2)]
-    iterations = 10
+    region_kernels = [(2, 3), (2,2), (3, 2), (4,4), (2, 1), (1, 2)]
+    iterations = 500
+    cell_size = configuration["cell_size"]
+    ceiling_height = configuration["ceiling_height"]
    
     #To store placed models.
     model_objects = []
@@ -343,14 +403,84 @@ def placeModels(configuration, room, model_vertices):
             if room[row][column]:
                 open_cell_coords.append((row, column))
 
+    #Spawn special unqiue items randomly around room before anything else, and track their AABBs.
+    unique_AABBs = []
+
+    #First spawn the robot.     
+    robot_cell_coord = random.choice(open_cell_coords)
+    robot_position = (
+        (robot_cell_coord[0] - 0.5 * rows) * cell_size,
+        (robot_cell_coord[1] - 0.5 * columns) * cell_size,
+        0
+    )
+    safe_meters = configuration["robot"]["safe_meters"] 
+    starting_angle = configuration["robot"]["starting_angle"]
+    robot_SafeAABB = AABB(np.array(
+        [
+            [-safe_meters, -safe_meters, ceiling_height],
+            [safe_meters, safe_meters, ceiling_height]
+        ]
+    ))
+    robot_SafeAABB.setPosition(robot_position)
+
+    #model_objects.append(Robot(name="robot", position=robot_position, rotation=(0, 0, starting_angle), scale=(1, 1, 1)))
+    model_objects.append(Box(position=robot_position, scale=robot_SafeAABB.getScale()))
+    unique_AABBs.append(robot_SafeAABB)
+
+    for model in configuration["unique_models"]:
+        rand_angle = random.uniform(0, 360)
+       
+        #It's stupid but keep looping until successful placement.
+        while True:
+            chosen_cell_coord = random.choice(open_cell_coords)
+            position = (
+                (chosen_cell_coord[0] - 0.5 * rows) * cell_size,
+                (chosen_cell_coord[1] - 0.5 * columns) * cell_size,
+                0
+            )
+            
+            #Check if model intersects region bounds or bounds of any other models in the region
+            c = np.cos(rand_angle * (PI / 180))
+            s = np.sin(rand_angle * (PI / 180))
+
+            R = np.array([
+                [c, -s, 0],
+                [s,  c, 0],
+                [0,  0, 1]
+            ])
+
+            model_AABB = AABB((R @ model_vertices[model["name"]].T).T)
+            model_AABB.setPosition(position)
+
+            flag = False
+            for aabb in unique_AABBs:
+                if model_AABB.intersects(aabb):
+                    flag = True
+                    break
+
+            if flag: continue
+            break
+
+        unique_AABBs.append(model_AABB)
+        model_objects.append(Model(name=model["name"], position=position, rotation=(0, 0, rand_angle), uri=model["uri"])) 
+
     region_AABBs = []
-    cell_size = configuration["cell_size"]
-    ceiling_height = configuration["ceiling_height"]
     for i in range(iterations):
         chosen_cell_coord = random.choice(open_cell_coords)
         chosen_kernel = random.choice(region_kernels)
 
         #TODO:Kernel must be clipped if it breaches walls.
+        #NOTE: For now, am just going to reject kernels that breach into invalid space.
+        flag = False
+        for row in range(chosen_kernel[0]):
+            for column in range(chosen_kernel[1]):
+                true_row = chosen_cell_coord[0] + row
+                true_column = chosen_cell_coord[1] + column
+                if not (0 <= true_row < rows and 0 <= true_column < columns) or room[true_row][true_column] == 0:
+                    flag = True
+                    break
+            if flag: break
+        if flag: continue
 
 
         #Convert to world space coordinates.
@@ -373,48 +503,94 @@ def placeModels(configuration, room, model_vertices):
                 flag = True
                 break
        
-        #if flag: continue
+        if flag: continue
 
         region_AABBs.append(region_AABB)
 
         #Select either a uniform or random layout within this particular region. 
-        #TODO: add support for uniform layout
-
-        density = 0.3
-        max_models_per_region = 10
-        temp_model = configuration["floor_models"][0]
+        layout = random.choice(["grid", "random"])
         region_model_objects = []
         region_model_AABBs = []
-        for j in range(max_models_per_region):
-            rand_angle = random.uniform(0, 360)
-            rand_position = (
-                chosen_cell_coord[0] + random.uniform(0, chosen_kernel[0]),
-                chosen_cell_coord[1] + random.uniform(0, chosen_kernel[1]),
-                0
-            )
+        if layout == "random":
+            max_models_per_region = 50
+            for j in range(max_models_per_region):
+                #Select a model to use.
+                temp_model = random.choice(configuration["floor_models"])
+                rand_angle = random.uniform(0, 360)
+                rand_position = (
+                    chosen_cell_coord[0] + random.uniform(0, chosen_kernel[0]),
+                    chosen_cell_coord[1] + random.uniform(0, chosen_kernel[1]),
+                    0
+                )
+                
+                #Check if model intersects region bounds or bounds of any other models in the region
+                c = np.cos(rand_angle * (PI / 180))
+                s = np.sin(rand_angle * (PI / 180))
+        
+                R = np.array([
+                    [c, -s, 0],
+                    [s,  c, 0],
+                    [0,  0, 1]
+                ])
+
+                model_AABB = AABB((R @ model_vertices[temp_model["name"]].T).T)
+                model_AABB.setPosition(rand_position)            
+                
+                if not model_AABB.inside(region_AABB): continue
+
+                flag = False
+                for aabb in (region_model_AABBs + unique_AABBs):
+                    if model_AABB.intersects(aabb):
+                        flag = True
+                        break
+
+                if flag: continue
+
+                region_model_AABBs.append(model_AABB)
+
+                #Place model in the scene.
+                region_model_objects.append(Model(temp_model["name"], position=rand_position, rotation=(0, 0, rand_angle), uri=temp_model["uri"]))
+        elif layout == "grid":
+            #Generate grid positions inside kernel.
+            max_models_per_row = 10
+            max_models_per_column = 10
+            angle = random.choice([0, 90])
+            for row in range(max_models_per_row):
+                for column in range(max_models_per_column):
+                    #Select a model to use.
+                    temp_model = random.choice(configuration["floor_models"])
+                     
+                    #Check if model intersects region bounds or bounds of any other models in the region
+                    c = np.cos(angle * (PI / 180))
+                    s = np.sin(angle * (PI / 180))
             
-            #Check if model intersects region bounds or bounds of any other models in the region
-            model_AABB = AABB(model_vertices[temp_model["name"]])
-            rand_position = (rand_position[0], rand_position[1], model_AABB.getScale()[2] / 2 + 0.0001)
-            model_AABB.setPosition(rand_position)            
-            
-            #if model_AABB.intersects(region_AABB): continue
+                    R = np.array([
+                        [c, -s, 0],
+                        [s,  c, 0],
+                        [0,  0, 1]
+                    ])
 
-            flag = False
-            for aabb in region_model_AABBs:
-                if model_AABB.intersects(aabb):
-                    flag = True
-                    print("Couldnt place object")
-                    break
+                    model_AABB = AABB((R @ model_vertices[temp_model["name"]].T).T)
+                    spacing = model_AABB.getScale()
+                    spacing = (spacing[0] + spacing[1]) / 2
 
-            if flag: continue
+                    position = (chosen_cell_coord[0] + spacing * row, chosen_cell_coord[1] + spacing * column, 0)
+                    model_AABB.setPosition(position)            
+                    
+                    if not model_AABB.inside(region_AABB): continue
 
-            region_model_AABBs.append(model_AABB)
+                    flag = False
+                    for aabb in (region_model_AABBs + unique_AABBs):
+                        if model_AABB.intersects(aabb):
+                            flag = True
+                            break
 
-            #Place model in the scene.
-            #Getting scale of object to place it ontop of floor
-            region_model_objects.append(Box(position=rand_position, scale=model_AABB.getScale()))
-            #region_model_objects.append(Model(temp_model["name"], position=rand_position, uri=temp_model["uri"]))
+                    if flag: continue
+
+                    region_model_AABBs.append(model_AABB)
+
+                    #Place model in the scene.
+                    region_model_objects.append(Model(temp_model["name"], position=position, rotation=(0, 0, angle), uri=temp_model["uri"]))
         #Now dump all region level models into the global models list.
         model_objects += region_model_objects
 

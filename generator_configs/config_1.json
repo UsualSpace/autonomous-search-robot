@@ -1,0 +1,63 @@
+{
+	"cell_size": 5,
+	"max_cell_rows": 20,
+	"max_cell_columns": 20,
+	"ceiling_height": 2.4,
+	"wall_thickness": 1,
+	"random_room_shape": true,
+	"random_growth_steps": 15,
+	"robot": {
+		"safe_meters": 3,
+		"starting_angle": 0
+	},
+	"floor_models": [
+		{
+			"name": "office_chair",
+			"uri": "https://fuel.gazebosim.org/1.0/codyh426/models/OfficeChairGrey",
+			"mesh_path": "/1/files/meshes/OfficeChairGrey.obj"
+		},
+		{
+			"name": "piano",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/Piano",
+			"mesh_path": "/1/files/meshes/piano.dae"
+		},
+		{
+			"name": "office_desk",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/Office Desk",
+			"mesh_path": "/1/files/meshes/desk.dae"
+		},
+		{
+			"name": "coffee_table",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/CoffeeTable 1",
+			"mesh_path": "/1/files/meshes/CoffeeTable.obj"
+		},
+		{
+			"name": "foldable_chair",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/foldable_chair",
+			"mesh_path": "/1/files/mesh/foldable_chair.dae"
+		}
+	],
+	"wall_models": [],
+	"unique_models": [	
+		{
+                        "name": "backpack",
+                        "uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/Jansport_School_Backpack_Blue_Streak",
+                        "mesh_path": "/1/files/meshes/model.obj"
+                },
+                {
+                        "name": "refrigerator",
+                        "uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/Refrigerator",
+                        "mesh_path": "/1/files/meshes/fridge.dae"
+                },
+                {
+                        "name": "bicycle",
+                        "uri": "https://fuel.gazebosim.org/1.0/athackst/models/bicycle",
+                        "mesh_path": "/2/files/meshes/bicycle.obj"
+                },
+                {
+                        "name": "teddy_bear",
+                        "uri": "https://fuel.gazebosim.org/1.0/GoogleResearch/models/Lovable_Huggable_Cuddly_Boutique_Teddy_Bear_Beige",
+                        "mesh_path": "/1/files/meshes/model.obj"
+                }
+	]
+}
