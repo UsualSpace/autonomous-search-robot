@@ -1,0 +1,58 @@
+{
+	"cell_size": 5,
+	"max_cell_rows": 5,
+	"max_cell_columns": 5,
+	"ceiling_height": 4,
+	"wall_thickness": 1,
+	"random_room_shape": false,
+	"random_growth_steps": 15,
+	"robot": {
+		"safe_meters": 5,
+		"starting_angle": 0
+	},
+	"floor_models": [
+		{
+			"name": "boxes",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/aws_robomaker_warehouse_ClutteringA_01",
+			"mesh_path": "/1/files/meshes/aws_robomaker_warehouse_ClutteringA_01_visual.DAE"
+		}, 
+		{
+			"name": "shelf_type1",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/aws_robomaker_warehouse_ShelfD_01",
+			"mesh_path": "/1/files/meshes/aws_robomaker_warehouse_ShelfD_01_visual.DAE"
+		},
+		{
+			"name": "buckets",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/aws_robomaker_warehouse_Bucket_01",
+			"mesh_path": "/1/files/meshes/aws_robomaker_warehouse_Bucket_01_visual.DAE"	
+		},
+		{
+			"name": "pallet_jack",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/aws_robomaker_warehouse_PalletJackB_01",
+			"mesh_path": "/1/files/meshes/aws_robomaker_warehouse_PalletJackB_01_visual.DAE"
+		}
+	],
+	"wall_models": [],
+	"unique_models": [	
+		{
+			"name": "backpack",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/Jansport_School_Backpack_Blue_Streak",
+			"mesh_path": "/1/files/meshes/model.obj"
+		},
+		{
+			"name": "refrigerator",
+			"uri": "https://fuel.gazebosim.org/1.0/Abdurrahman/models/Refrigerator",
+			"mesh_path": "/1/files/meshes/fridge.dae"
+		},
+		{
+			"name": "bicycle",
+			"uri": "https://fuel.gazebosim.org/1.0/athackst/models/bicycle",
+			"mesh_path": "/2/files/meshes/bicycle.obj"
+		},
+		{
+			"name": "teddy_bear",
+			"uri": "https://fuel.gazebosim.org/1.0/GoogleResearch/models/Lovable_Huggable_Cuddly_Boutique_Teddy_Bear_Beige",
+			"mesh_path": "/1/files/meshes/model.obj"
+		}
+	]
+}
